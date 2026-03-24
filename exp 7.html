@@ -1,0 +1,338 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechNova Solutions - OOP Demo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#1f3c88,#9b59b6,#ff6b81);
+color:white;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.25);
+position:sticky;
+top:0;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+nav a:hover{
+color:#ffd166;
+}
+
+header{
+text-align:center;
+padding:120px 20px;
+}
+
+header h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+header p{
+font-size:20px;
+opacity:0.9;
+}
+
+section{
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+color:#333;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 20px rgba(0,0,0,0.25);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card h3{
+color:#1f3c88;
+margin-bottom:10px;
+}
+
+.glass{
+background:rgba(255,255,255,0.15);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+
+footer{
+text-align:center;
+padding:40px;
+background:rgba(0,0,0,0.3);
+margin-top:60px;
+}
+
+.highlight{
+color:#ffd166;
+font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<h2>🚀 TechNova</h2>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#oop">OOP Demo</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+
+<header id="home">
+
+<h1>Enterprise Company Management</h1>
+
+<p>Demonstrating Object-Oriented Programming in a Real Company System</p>
+
+</header>
+
+
+<section id="about">
+
+<h2 style="margin-bottom:20px;">🏢 About Company</h2>
+
+<div class="glass">
+
+<p>
+<span class="highlight">TechNova Solutions</span> develops scalable enterprise applications.
+This project demonstrates how <span class="highlight">Object-Oriented Programming</span>
+concepts are used in real-world systems.
+</p>
+
+<br>
+
+<p>
+OOP principles like <b>Encapsulation, Inheritance, Polymorphism and Abstraction</b>
+help create maintainable and reusable software.
+</p>
+
+</div>
+
+</section>
+
+
+<section id="services">
+
+<h2 style="margin-bottom:25px;">💼 Our Services</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Enterprise Applications</h3>
+<p>Building scalable business systems using modern programming architecture.</p>
+</div>
+
+<div class="card">
+<h3>Cloud Integration</h3>
+<p>Secure cloud deployment and infrastructure management.</p>
+</div>
+
+<div class="card">
+<h3>System Architecture</h3>
+<p>Designing maintainable systems using OOP design principles.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="oop">
+
+<h2 style="margin-bottom:25px;">👨‍💻 Employee Management (OOP)</h2>
+
+<div class="grid" id="employeeCards"></div>
+
+</section>
+
+
+<section>
+
+<h2 style="margin-bottom:25px;">📘 OOP Concepts</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Encapsulation</h3>
+<p>Private data fields protect sensitive information like salary.</p>
+</div>
+
+<div class="card">
+<h3>Inheritance</h3>
+<p>Developer and Manager classes inherit from Employee.</p>
+</div>
+
+<div class="card">
+<h3>Polymorphism</h3>
+<p>The same method behaves differently for different objects.</p>
+</div>
+
+<div class="card">
+<h3>Abstraction</h3>
+<p>Employee acts as an abstract blueprint for all employees.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="contact">
+
+<h2 style="margin-bottom:20px;">📞 Contact</h2>
+
+<div class="glass">
+
+<p>Email: contact@technova.com</p>
+<p>Phone: +91 98765 43210</p>
+<p>Location: India</p>
+
+</div>
+
+</section>
+
+
+<footer>
+© 2026 TechNova Solutions | OOP Demonstration Project
+</footer>
+
+
+<script>
+
+class Employee{
+
+#salary;
+
+constructor(name,department,salary){
+
+if(new.target===Employee){
+throw new Error("Abstract class cannot be instantiated");
+}
+
+this.name=name;
+this.department=department;
+this.#salary=salary;
+
+}
+
+getDetails(){
+return `${this.name} works in ${this.department} as ${this.getRole()}`;
+}
+
+}
+
+
+class Developer extends Employee{
+
+constructor(name,department,salary,language){
+super(name,department,salary);
+this.language=language;
+}
+
+getRole(){
+return "Developer";
+}
+
+}
+
+
+class Manager extends Employee{
+
+constructor(name,department,salary,teamSize){
+super(name,department,salary);
+this.teamSize=teamSize;
+}
+
+getRole(){
+return "Manager";
+}
+
+}
+
+
+const employees=[
+
+new Developer("Arun Kumar","Engineering",90000,"TypeScript"),
+new Manager("Priya Sharma","Operations",120000,8)
+
+];
+
+
+const container=document.getElementById("employeeCards");
+
+employees.forEach(emp=>{
+
+const card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+<h3>${emp.getRole()}</h3>
+<p>${emp.getDetails()}</p>
+<p><strong>Department:</strong> ${emp.department}</p>
+`;
+
+container.appendChild(card);
+
+});
+
+</script>
+
+</body>
+</html>
+```
